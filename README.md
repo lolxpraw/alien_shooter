@@ -1,234 +1,234 @@
-# 📁 Giải thích cấu trúc thư mục Project `test_game`
+# 📁 Project Directory Structure — `test_game`
 
-Đây là project game chạy trên vi điều khiển **STM32L1** (kit AK Embedded Base Kit), sử dụng **AK Framework** — một RTOS nhỏ với mô hình lập trình dựa trên **task + message**.
+This is a game project running on the **STM32L1** microcontroller (AK Embedded Base Kit), built on top of the **AK Framework** — a lightweight RTOS with a **task + message** event-driven programming model.
 
 ---
 
-## 🗂️ Cấu trúc tổng quan
+## 🗂️ Overview
 
 ```
 test_game/
-├── hardware/        ← Tài liệu phần cứng (sơ đồ mạch, ảnh, BOM)
-├── boot/            ← Chương trình bootloader (nạp firmware OTA)
-├── application/     ← Chương trình chính (game + toàn bộ logic)
-└── .vscode/         ← Cấu hình editor (không ảnh hưởng code)
+├── hardware/        ← Hardware documentation (schematics, images, BOM)
+├── boot/            ← Bootloader program (OTA firmware update)
+├── application/     ← Main application (game + all logic)
+└── .vscode/         ← Editor configuration (does not affect code)
 ```
 
 ---
 
-## 🔧 `hardware/` — Tài liệu phần cứng
+## 🔧 `hardware/` — Hardware Documentation
 
-> Không chứa code, chỉ chứa tài liệu thiết kế phần cứng.
+> Contains no source code — only hardware design documents.
 
-| Folder | Nội dung |
+| Folder | Contents |
 |--------|----------|
-| `schematic/` | File sơ đồ mạch điện (`.pdf`) — phiên bản 2 và 3 của AK Base Kit |
-| `images/` | Ảnh chụp board mạch thực tế |
-| `board-assembly/` | Tài liệu lắp ráp linh kiện lên board |
-| `manufacturing/` | File dùng cho nhà máy sản xuất PCB (Gerber, BOM...) |
-| `bin/` | File binary firmware mẫu đã build sẵn |
+| `schematic/` | Circuit schematic files (`.pdf`) — versions 2 and 3 of the AK Base Kit |
+| `images/` | Photos of the physical PCB board |
+| `board-assembly/` | Component assembly documentation |
+| `manufacturing/` | PCB manufacturing files (Gerber, BOM, etc.) |
+| `bin/` | Pre-built binary firmware samples |
 
 ---
 
 ## 🥾 `boot/` — Bootloader
 
-> Chương trình **khởi động đầu tiên** khi cấp nguồn cho board. Nhiệm vụ chính là kiểm tra xem có firmware mới cần nạp không (OTA update), nếu không thì nhảy sang chạy `application`.
+> The **first program** that runs when the board is powered on. Its main job is to check if a new firmware is available for OTA update; if not, it jumps to the `application`.
 
-### `boot/sources/` chứa:
+### `boot/sources/` contains:
 
-| Folder/File | Chức năng |
-|-------------|-----------|
-| `app/` | Logic nghiệp vụ của bootloader (kiểm tra flash, quyết định jump sang app) |
-| `driver/` | Driver phần cứng tối thiểu cần cho boot (flash, UART...) |
-| `platform/` | Cấu hình phần cứng STM32 cho bootloader |
-| `sys/` | Hệ thống thấp nhất: khởi tạo chip, debug |
-| `common/` | Các tiện ích dùng chung |
-| `Makefile` | Script biên dịch bootloader |
-| `stm32l_init.gdb` | Script GDB để nạp/debug qua ST-Link |
+| Folder/File | Function |
+|-------------|----------|
+| `app/` | Bootloader business logic (check flash, decide whether to jump to app) |
+| `driver/` | Minimal hardware drivers required for boot (flash, UART, etc.) |
+| `platform/` | STM32 hardware configuration for the bootloader |
+| `sys/` | Lowest-level system: chip initialization, debug |
+| `common/` | Shared utilities |
+| `Makefile` | Build script for the bootloader |
+| `stm32l_init.gdb` | GDB script for flashing/debugging via ST-Link |
 
 ---
 
-## 📱 `application/` — Ứng dụng chính (Game)
+## 📱 `application/` — Main Application (Game)
 
-> Đây là phần **quan trọng nhất** — chứa toàn bộ code game và logic hệ thống.
+> This is the **most important part** — it contains all game code and system logic.
 
 ```
 application/
 ├── Makefile
 ├── stm32l_init.gdb
-├── build_ak-base-kit-stm32l151-application/   ← Thư mục output sau khi build
-└── sources/                                    ← Toàn bộ source code
-    ├── ak/         ← AK Framework (RTOS nhỏ)
-    ├── app/        ← Logic ứng dụng / game chính
-    ├── common/     ← Tiện ích dùng chung
-    ├── driver/     ← Driver cho ngoại vi (màn hình, buzzer, nút...)
-    ├── libraries/  ← Thư viện bên thứ 3
-    ├── networks/   ← Giao thức mạng (Zigbee, RF, Modbus)
-    ├── platform/   ← Cấu hình phần cứng STM32
-    └── sys/        ← Hệ thống cấp thấp
+├── build_ak-base-kit-stm32l151-application/   ← Output directory after build
+└── sources/                                    ← All source code
+    ├── ak/         ← AK Framework (lightweight RTOS)
+    ├── app/        ← Application / game logic
+    ├── common/     ← Shared utilities
+    ├── driver/     ← Peripheral drivers (display, buzzer, buttons, etc.)
+    ├── libraries/  ← Third-party libraries
+    ├── networks/   ← Network protocols (Zigbee, RF, Modbus)
+    ├── platform/   ← STM32 hardware configuration
+    └── sys/        ← Low-level system layer
 ```
 
 ---
 
 ### ⚙️ `sources/ak/` — AK Framework (RTOS)
 
-> Đây là **"trái tim"** của hệ thống. AK là một mini-RTOS tự phát triển, cho phép chạy nhiều **task** song song theo mô hình **event-driven** (nhận và xử lý message).
+> The **"heart"** of the system. AK is a custom-built mini-RTOS that allows multiple **tasks** to run concurrently using an **event-driven** model (receive and process messages).
 
-| Folder | Nội dung |
+| Folder | Contents |
 |--------|----------|
-| `inc/` | Header files: định nghĩa Task, Message, Timer, Signal... |
-| `src/` | Source code của AK kernel |
-| `doc/` | Tài liệu về AK framework |
-| `ak.cfg.mk` | File cấu hình chọn tính năng của AK khi build |
+| `inc/` | Header files: Task, Message, Timer, Signal definitions, etc. |
+| `src/` | AK kernel source code |
+| `doc/` | AK framework documentation |
+| `ak.cfg.mk` | Feature configuration file for AK at build time |
 
 ---
 
-### 🎮 `sources/app/` — Logic ứng dụng (Game chính)
+### 🎮 `sources/app/` — Application Logic (Main Game)
 
-> Đây là nơi chứa **toàn bộ code game và task điều hành**.
+> This is where **all game code and task management** lives.
 
-#### Files quan trọng:
+#### Key Files:
 
-| File | Chức năng |
-|------|-----------|
-| `app.cpp / app.h` | Điểm khởi đầu ứng dụng, khởi tạo các task |
-| `task_list.cpp / .h` | **Danh sách tất cả task** trong hệ thống (khai báo task ID, priority) |
-| `task_display.cpp` | Task quản lý việc vẽ màn hình OLED |
-| `task_system.cpp` | Task hệ thống (reset, watchdog...) |
-| `task_life.cpp` | Task "nhịp tim" — LED nhấp nháy để biết board còn sống |
-| `task_shell.cpp` | Task xử lý lệnh debug qua UART (gõ lệnh như terminal) |
-| `task_fw.cpp` | Task cập nhật firmware (OTA) |
-| `task_zigbee.cpp` | Task giao tiếp Zigbee không dây |
-| `app_data.cpp / .h` | Dữ liệu toàn cục của ứng dụng |
-| `app_bsp.cpp / .h` | Board Support Package — khởi tạo phần cứng cho app |
-| `shell.cpp` | Triển khai các lệnh debug qua serial |
-
-#### Folder `screens/` — Các màn hình hiển thị:
-
-> Mỗi file `scr_*.cpp` là **một màn hình** trên OLED display.
-
-| File | Màn hình |
+| File | Function |
 |------|----------|
-| `scr_startup.cpp` | Màn hình khởi động (logo khi mới bật) |
-| `scr_welcome.cpp` | Màn hình chào mừng |
-| `scr_idle.cpp` | Màn hình chờ (idle screen) |
-| `scr_game.cpp` | **Màn hình game chính** (Space Invaders!) |
-| `scr_image.cpp` | Màn hình hiển thị ảnh bitmap |
-| `scr_qrcode.cpp` | Màn hình hiển thị QR code |
-| `screens_bitmap.cpp` | Lưu trữ các ảnh bitmap dùng trong game |
-| `screens.h` | Liệt kê tất cả màn hình, dùng `screen_manager` điều hướng |
+| `app.cpp / app.h` | Application entry point, initializes all tasks |
+| `task_list.cpp / .h` | **Complete task registry** (task IDs, priorities) |
+| `task_display.cpp` | Task managing OLED screen rendering |
+| `task_system.cpp` | System task (reset, watchdog, etc.) |
+| `task_life.cpp` | Heartbeat task — blinks LED to indicate the board is alive |
+| `task_shell.cpp` | Debug shell task over UART (command-line interface) |
+| `task_fw.cpp` | Firmware update task (OTA) |
+| `task_zigbee.cpp` | Zigbee wireless communication task |
+| `app_data.cpp / .h` | Global application data |
+| `app_bsp.cpp / .h` | Board Support Package — hardware initialization for the app |
+| `shell.cpp` | Implementation of serial debug commands |
+
+#### Folder `screens/` — Display Screens:
+
+> Each `scr_*.cpp` file represents **one screen** on the OLED display.
+
+| File | Screen |
+|------|--------|
+| `scr_startup.cpp` | Startup screen (logo on power-on) |
+| `scr_welcome.cpp` | Welcome screen |
+| `scr_idle.cpp` | Idle/standby screen |
+| `scr_game.cpp` | **Main game screen** (Space Invaders!) |
+| `scr_image.cpp` | Bitmap image display screen |
+| `scr_qrcode.cpp` | QR code display screen |
+| `screens_bitmap.cpp` | Bitmap image storage used in the game |
+| `screens.h` | Lists all screens, used by `screen_manager` for navigation |
 
 ---
 
-### 🛠️ `sources/driver/` — Driver phần cứng
+### 🛠️ `sources/driver/` — Hardware Drivers
 
-> Mỗi **sub-folder** là driver cho một linh kiện cụ thể trên board.
+> Each **sub-folder** is a driver for a specific component on the board.
 
-| Folder | Thiết bị | Chức năng |
-|--------|----------|-----------|
-| `Adafruit_oled_drv/` | Màn hình OLED SSD1306 | Vẽ pixel, chữ, hình lên màn hình |
-| `buzzer/` | Còi buzzer | Phát nhạc, âm thanh game |
-| `button/` | Các nút bấm | Đọc trạng thái nút, chống rung (debounce) |
-| `led/` | LED | Điều khiển bật/tắt LED |
-| `gpio/` | GPIO chung | Cấu hình và đọc/ghi các chân GPIO |
-| `eeprom/` | EEPROM nội | Lưu dữ liệu không mất khi tắt nguồn |
-| `flash/` | Flash nội | Lưu firmware OTA vào flash |
-| `nRF24/` | Module RF nRF24L01 | Truyền nhận dữ liệu không dây |
-| `AsyncDelay/` | Timer không chặn | Tạo delay mà không block task khác |
+| Folder | Device | Function |
+|--------|--------|----------|
+| `Adafruit_oled_drv/` | SSD1306 OLED display | Draw pixels, text, and shapes on screen |
+| `buzzer/` | Piezo buzzer | Play music and game sound effects |
+| `button/` | Push buttons | Read button state with debouncing |
+| `led/` | LEDs | Control LED on/off |
+| `gpio/` | General GPIO | Configure and read/write GPIO pins |
+| `eeprom/` | Internal EEPROM | Persistent data storage (survives power-off) |
+| `flash/` | Internal Flash | Store OTA firmware to flash memory |
+| `nRF24/` | nRF24L01 RF module | Wireless data transmission and reception |
+| `AsyncDelay/` | Non-blocking timer | Create delays without blocking other tasks |
 
-#### Chi tiết `buzzer/`:
+#### `buzzer/` Details:
 
-| File | Chức năng |
-|------|-----------|
-| `buzzer.c / .h` | Điều khiển phần cứng PWM tạo âm thanh |
-| `buzzer_music.c / .h` | Lưu danh sách bài nhạc (Pirates of Caribbean, Mario...) và phát theo sequence note |
-
----
-
-### 🔌 `sources/platform/stm32l/` — Cấu hình STM32
-
-> Lớp trung gian giữa driver và phần cứng STM32 thực tế.
-
-| File | Chức năng |
-|------|-----------|
-| `io_cfg.c / .h` | **Cấu hình tất cả chân IO** (SPI, I2C, UART, PWM...) |
-| `sys_cfg.c / .h` | Cấu hình clock, timer, interrupt hệ thống |
-| `system.c / .h` | Hàm khởi tạo chip STM32 |
-| `system_stm32l1xx.c` | File init chuẩn của ST cho STM32L1 |
-| `platform.c / .h` | Abstraction layer cho platform |
-| `ak.ld` | Linker script — phân vùng Flash/RAM cho chương trình |
-| `mini_cpp.cpp` | Hỗ trợ tối thiểu cho C++ trên bare-metal (new/delete) |
-| `Libraries/` | HAL/SPL library của STMicroelectronics |
-| `arduino/` | Lớp tương thích Arduino (cho một số driver viết theo chuẩn Arduino) |
+| File | Function |
+|------|----------|
+| `buzzer.c / .h` | PWM hardware control for sound generation |
+| `buzzer_music.c / .h` | Music library (Pirates of the Caribbean, Mario, etc.) with note-sequence playback |
 
 ---
 
-### 🌐 `sources/networks/` — Giao thức truyền thông
+### 🔌 `sources/platform/stm32l/` — STM32 Configuration
 
-| Folder | Giao thức | Chức năng |
-|--------|-----------|-----------|
-| `ArduinoZigBee/` | Zigbee | Mạng không dây mesh |
-| `rf_protocols/` | RF tùy chỉnh | Giao thức RF qua nRF24 |
-| `mbmaster-v2.9.6/` | Modbus RTU | Giao thức công nghiệp qua RS485/UART |
-| `net/` | TCP/IP nhỏ | Stack mạng cơ bản |
+> Middleware layer between drivers and the actual STM32 hardware.
 
----
-
-### 📦 `sources/libraries/` — Thư viện bên thứ 3
-
-| Folder | Chức năng |
-|--------|-----------|
-| `ArduinoJson/` | Parse/tạo JSON (dùng cho cấu hình hoặc giao tiếp) |
-| `nlohmann/` | Thư viện JSON C++ hiện đại |
-| `QRCode/` | Tạo mã QR code hiển thị lên OLED |
+| File | Function |
+|------|----------|
+| `io_cfg.c / .h` | **All IO pin configuration** (SPI, I2C, UART, PWM, etc.) |
+| `sys_cfg.c / .h` | System clock, timer, and interrupt configuration |
+| `system.c / .h` | STM32 chip initialization functions |
+| `system_stm32l1xx.c` | ST's standard init file for STM32L1 |
+| `platform.c / .h` | Platform abstraction layer |
+| `ak.ld` | Linker script — defines Flash/RAM memory regions |
+| `mini_cpp.cpp` | Minimal C++ support for bare-metal (new/delete operators) |
+| `Libraries/` | STMicroelectronics HAL/SPL library |
+| `arduino/` | Arduino compatibility layer (for drivers written in Arduino style) |
 
 ---
 
-### 🧰 `sources/common/` — Tiện ích dùng chung
+### 🌐 `sources/networks/` — Communication Protocols
 
-| File | Chức năng |
-|------|-----------|
-| `screen_manager.cpp / .h` | Quản lý chuyển đổi giữa các màn hình |
-| `view_render.cpp / .h` | Engine vẽ UI lên OLED |
-| `view_item.cpp / .h` | Các thành phần UI cơ bản (text, icon...) |
-| `xprintf.c / .h` | Hàm printf tối ưu cho embedded (thay thế printf nặng nề) |
-| `cmd_line.c / .h` | Parser lệnh từ serial/shell |
-| `utils.c / .h` | Các hàm tiện ích chung (math, string...) |
-| `container/` | Cấu trúc dữ liệu (list, queue...) |
+| Folder | Protocol | Function |
+|--------|----------|----------|
+| `ArduinoZigBee/` | Zigbee | Wireless mesh networking |
+| `rf_protocols/` | Custom RF | RF protocol over nRF24 |
+| `mbmaster-v2.9.6/` | Modbus RTU | Industrial protocol over RS485/UART |
+| `net/` | Mini TCP/IP | Basic networking stack |
 
 ---
 
-### 🔩 `sources/sys/` — Hệ thống cấp thấp
+### 📦 `sources/libraries/` — Third-Party Libraries
 
-| File | Chức năng |
-|------|-----------|
-| `sys_boot.c / .h` | Xử lý trình tự boot, kiểm tra nguồn boot |
-| `sys_dbg.c / .h` | Debug hệ thống: hard fault handler, stack dump |
-| `sys_ctrl.h` | Điều khiển hệ thống: reset, sleep... |
-| `sys_irq.h` | Quản lý ngắt (interrupt) |
-| `sys_io.h` | Abstraction layer cho IO |
+| Folder | Function |
+|--------|----------|
+| `ArduinoJson/` | Parse/generate JSON (for configuration or communication) |
+| `nlohmann/` | Modern C++ JSON library |
+| `QRCode/` | Generate QR codes to display on the OLED |
 
 ---
 
-## 📊 Sơ đồ phân lớp tổng quát
+### 🧰 `sources/common/` — Shared Utilities
+
+| File | Function |
+|------|----------|
+| `screen_manager.cpp / .h` | Manage transitions between screens |
+| `view_render.cpp / .h` | UI rendering engine for OLED |
+| `view_item.cpp / .h` | Basic UI components (text, icons, etc.) |
+| `xprintf.c / .h` | Lightweight printf for embedded systems (replaces heavy standard printf) |
+| `cmd_line.c / .h` | Command parser for serial/shell input |
+| `utils.c / .h` | General-purpose utility functions (math, string, etc.) |
+| `container/` | Data structures (list, queue, etc.) |
+
+---
+
+### 🔩 `sources/sys/` — Low-Level System
+
+| File | Function |
+|------|----------|
+| `sys_boot.c / .h` | Boot sequence handling, boot source detection |
+| `sys_dbg.c / .h` | System debug: hard fault handler, stack dump |
+| `sys_ctrl.h` | System control: reset, sleep, etc. |
+| `sys_irq.h` | Interrupt management |
+| `sys_io.h` | IO abstraction layer |
+
+---
+
+## 📊 Architecture Layer Diagram
 
 ```
 ┌─────────────────────────────────────────────┐
-│              app/screens/                   │  ← Game UI (màn hình)
+│              app/screens/                   │  ← Game UI (display screens)
 ├─────────────────────────────────────────────┤
-│                  app/                       │  ← Logic game, task
+│                  app/                       │  ← Game logic, tasks
 ├──────────────┬──────────────────────────────┤
-│   common/    │       networks/              │  ← Tiện ích & giao thức
+│   common/    │       networks/              │  ← Utilities & protocols
 ├──────────────┴──────────────────────────────┤
 │                   ak/                       │  ← RTOS (task, message)
 ├─────────────────────────────────────────────┤
-│                 driver/                     │  ← Driver linh kiện
+│                 driver/                     │  ← Component drivers
 ├─────────────────────────────────────────────┤
-│               platform/stm32l/              │  ← Cấu hình STM32
+│               platform/stm32l/              │  ← STM32 configuration
 ├─────────────────────────────────────────────┤
 │                   sys/                      │  ← Boot, IRQ, debug
 └─────────────────────────────────────────────┘
-            PHẦN CỨNG STM32L151
+                STM32L151 HARDWARE
 ```
 
-> **Quy tắc quan trọng:** Lớp trên chỉ gọi xuống lớp dưới, không gọi ngược lại. Ví dụ: `app/` gọi `driver/`, `driver/` gọi `platform/`, nhưng `platform/` không biết gì về `app/`.
+> **Key rule:** Upper layers only call down to lower layers, never the reverse. For example: `app/` calls `driver/`, `driver/` calls `platform/`, but `platform/` has no knowledge of `app/`.
