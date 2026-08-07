@@ -1,4 +1,4 @@
-# 📁 Project Directory Structure — `test_game`
+# 📁 Project Directory Structure — `alien_shooter`
 
 This is a game project running on the **STM32L1** microcontroller (AK Embedded Base Kit), built on top of the **AK Framework** — a lightweight RTOS with a **task + message** event-driven programming model.
 
