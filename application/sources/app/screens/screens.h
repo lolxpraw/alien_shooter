@@ -43,4 +43,14 @@ extern view_dynamic_t dyn_view_welcome;
 extern view_screen_t scr_welcome;
 extern void scr_welcome_handle(ak_msg_t* msg);
 
+// scr_image
+extern view_dynamic_t dyn_view_image;
+extern view_screen_t scr_image;
+extern void scr_image_handle(ak_msg_t* msg);
+
+// scr_game
+extern view_dynamic_t dyn_view_game;
+extern view_screen_t  scr_game;
+extern void scr_game_handle(ak_msg_t* msg);
+
 #endif //__SCREENS_H__

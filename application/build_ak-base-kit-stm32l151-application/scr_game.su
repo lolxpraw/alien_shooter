@@ -1,0 +1,7 @@
+sources/app/screens/scr_game.cpp:87:16:uint8_t rng8()	0	static
+sources/app/screens/scr_game.cpp:543:13:void do_shoot()	12	static
+sources/app/screens/scr_game.cpp:233:13:void level_init(uint8_t)	32	static
+sources/app/screens/scr_game.cpp:292:13:void game_reset()	0	static
+sources/app/screens/scr_game.cpp:560:6:void scr_game_handle(ak_msg_t*)	56	static
+sources/app/screens/scr_game.cpp:114:13:void draw_enemy(int16_t, int16_t, uint8_t, bool)	32	static
+sources/app/screens/scr_game.cpp:159:13:void view_scr_game()	56	static

@@ -6,6 +6,11 @@
 volatile       uint32_t          _beep_duration;
 volatile       bool              _tones_playing;
 volatile const Tone_TypeDef     *_tones;
+volatile const Tone_TypeDef     *_tones_start;
+volatile const Tone_TypeDef     *_bg_tones_start = NULL;
+volatile const Tone_TypeDef     *_bg_tones_saved = NULL;
+volatile       bool              _is_looping = false;
+volatile       bool              _bg_is_looping = false;
 volatile       bool              _buzzer_silent = BUZZER_SILENT_OFF;
 
 GPIO_InitTypeDef GPIO_InitStructure;
@@ -17,6 +22,10 @@ typedef struct {
 
 static const buzzer_music_t buzzer_music_table[] = {
 	{BUZZER_SOUND_CLICK,			tones_click},
+	{BUZZER_SOUND_DOOM,				tones_doom},
+	{BUZZER_SOUND_PEW,				tones_pew},
+	{BUZZER_SOUND_GAMEOVER,			tones_gameover},
+	{BUZZER_SOUND_PIRATES,			tones_pirates},
 	{BUZZER_SOUND_BANG,				tones_bang},
 	{BUZZER_SOUND_USB_CONNECTED,	tones_usb_connected},
 	{BUZZER_SOUND_USB_DISCONNECTED,	tones_usb_disconnected},
@@ -63,9 +72,36 @@ void buzzer_irq( void ) {
 				_tones++;
 				if (_tones->frequency == 0 && _tones->duration == 0) {
 					// Last tone in sequence
-					BUZZER_Disable();
-					_tones_playing = false;
-					_tones = NULL;
+					if (_is_looping && _tones_start != NULL) {
+						_tones = _tones_start;
+						if (_tones->frequency == 0) {
+							BUZZER_TIM->ARR = SystemCoreClock / (100 * BUZZER_TIM->PSC) - 1;
+							BUZZER_TIM->CCR3 = 0;
+							_beep_duration = _tones->duration + 1;
+						} else {
+							BUZZER_Enable(_tones->frequency, _tones->duration);
+						}
+					} else if (_bg_is_looping && _bg_tones_start != NULL) {
+						if (_bg_tones_saved != NULL) {
+							_tones = _bg_tones_saved;
+							_bg_tones_saved = NULL;
+						} else {
+							_tones = _bg_tones_start;
+						}
+						_tones_start = _bg_tones_start;
+						_is_looping = true;
+						if (_tones->frequency == 0) {
+							BUZZER_TIM->ARR = SystemCoreClock / (100 * BUZZER_TIM->PSC) - 1;
+							BUZZER_TIM->CCR3 = 0;
+							_beep_duration = _tones->duration + 1;
+						} else {
+							BUZZER_Enable(_tones->frequency, _tones->duration);
+						}
+					} else {
+						BUZZER_Disable();
+						_tones_playing = false;
+						_tones = NULL;
+					}
 				} else {
 					if (_tones->frequency == 0) {
 						// Silence period
@@ -172,19 +208,47 @@ void BUZZER_Disable(void) {
 // Start playing tones sequence
 // input:
 //   tones - pointer to tones array
-static void BUZZER_PlayTones(const Tone_TypeDef * tones) {
+static void BUZZER_PlayTones(const Tone_TypeDef * tones, bool loop) {
 	if (_buzzer_silent != BUZZER_SILENT_ON) {
+		if (loop) {
+			_bg_tones_start = tones;
+			_bg_is_looping = true;
+			_bg_tones_saved = NULL;
+		} else {
+			if (_is_looping) {
+				_bg_tones_saved = _tones;
+			}
+		}
 		_tones = tones;
+		_tones_start = tones;
+		_is_looping = loop;
 		_tones_playing = true;
-		BUZZER_Enable(_tones->frequency,_tones->duration);
+		if (_tones->frequency == 0) {
+			_beep_duration = _tones->duration + 1;
+		} else {
+			BUZZER_Enable(_tones->frequency,_tones->duration);
+		}
 	}
 }
 
 void BUZZER_PlaySound(buzzer_sound_t sound) {
 	const Tone_TypeDef* tones = buzzer_get_music(sound);
 	if (tones != NULL) {
-		BUZZER_PlayTones(tones);
+		BUZZER_PlayTones(tones, false);
 	}
+}
+
+void BUZZER_PlaySoundLoop(buzzer_sound_t sound) {
+	const Tone_TypeDef* tones = buzzer_get_music(sound);
+	if (tones != NULL) {
+		BUZZER_PlayTones(tones, true);
+	}
+}
+
+void BUZZER_StopLoop(void) {
+	_bg_is_looping = false;
+	_bg_tones_start = NULL;
+	_bg_tones_saved = NULL;
 }
 
 void BUZZER_Silent(bool isSilent) {

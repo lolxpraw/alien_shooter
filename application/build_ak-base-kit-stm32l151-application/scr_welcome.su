@@ -1,0 +1,3 @@
+sources/app/screens/scr_welcome.cpp:13:13:0(const char*, uint8_t)	16	static
+sources/app/screens/scr_welcome.cpp:36:6:void view_scr_welcome()	24	static
+sources/app/screens/scr_welcome.cpp:55:6:void scr_welcome_handle(ak_msg_t*)	8	static

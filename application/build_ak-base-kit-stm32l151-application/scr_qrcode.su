@@ -1,0 +1,2 @@
+sources/app/screens/scr_qrcode.cpp:63:6:void view_scr_qrcode()	32	static
+sources/app/screens/scr_qrcode.cpp:77:6:void scr_qrcode_handle(ak_msg_t*)	72	dynamic

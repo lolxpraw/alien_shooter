@@ -16,6 +16,10 @@ typedef struct {
 
 typedef enum {
 	BUZZER_SOUND_CLICK = 0,
+	BUZZER_SOUND_DOOM,
+	BUZZER_SOUND_PEW,
+	BUZZER_SOUND_GAMEOVER,
+	BUZZER_SOUND_PIRATES,
 	BUZZER_SOUND_BANG,
 	BUZZER_SOUND_USB_CONNECTED,
 	BUZZER_SOUND_USB_DISCONNECTED,
@@ -39,6 +43,10 @@ typedef enum {
 } buzzer_sound_t;
 
 extern const Tone_TypeDef tones_click[];
+extern const Tone_TypeDef tones_doom[];
+extern const Tone_TypeDef tones_pew[];
+extern const Tone_TypeDef tones_gameover[];
+extern const Tone_TypeDef tones_pirates[];
 extern const Tone_TypeDef tones_bang[];
 extern const Tone_TypeDef tones_usb_connected[];
 extern const Tone_TypeDef tones_usb_disconnected[];
