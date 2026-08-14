@@ -26,24 +26,6 @@
 
 ---
 
-## Table of Contents
-
-- [About the Game](#-about-the-game)
-- [Game Features](#-game-features)
-- [Controls](#-controls)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Clone & Build](#clone--build)
-  - [Flash to Board](#flash-to-board)
-- [Architecture Overview](#-architecture-overview)
-- [Game Mechanics](#-game-mechanics)
-- [Sound & Music](#-sound--music)
-- [Documentation](#-documentation)
-- [License](#-license)
-- [Acknowledgments](#-acknowledgments)
-
----
 
 ## About the Game
 
