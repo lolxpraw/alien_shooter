@@ -235,13 +235,11 @@ The game features a rich audio experience powered by the **piezo buzzer** driver
 
 | Sound | Trigger |
 |-------|---------|
-| Pirates of the Caribbean | Background music (loops during gameplay) |
+| Doom | Background music (loops during gameplay) |
 | PEW | Player bullet hits an enemy |
 | BANG | Player gets hit (loses a life) |
 | Game Over | All lives lost |
 | Welcome | Level cleared |
-
-Additional music available in the library: Super Mario Bros, Merry Christmas, and various tone effects.
 
 ---
 
