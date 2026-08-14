@@ -1,4 +1,4 @@
-<h1 align="center">🛸 Alien Shooter — Space Invaders on STM32</h1>
+<h1 align="center"> Alien Shooter — Space Invaders on STM32</h1>
 
 <p align="center">
   <em>A classic Space Invaders game running on the <strong>STM32L151</strong> microcontroller (AK Embedded Base Kit), featuring boss fights, progressive difficulty, sound effects, and background music — all rendered on a 128×64 OLED display.</em>
@@ -26,7 +26,7 @@
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
 - [About the Game](#-about-the-game)
 - [Game Features](#-game-features)
@@ -53,23 +53,23 @@ Built on top of the **AK Framework** — a lightweight custom RTOS with a **task
 
 ---
 
-## ✨ Game Features
+## Game Features
 
 | Feature | Description |
 |---------|-------------|
-| 🎯 **Progressive Difficulty** | Enemy speed, bullet count, and firing rate increase each level |
-| 👾 **3 Enemy Types** | Top row (^^ shape), mid row (armed rect), bottom row (crab) — each with unique animations |
-| 🛸 **Boss Fights** | Every 3rd level features a large UFO boss with HP bar and 3 attack patterns |
-| ❤️ **3 Lives System** | Player has 3 lives; HUD displays remaining lives in real-time |
-| 🔫 **Dual-Bullet Mode** | From Level 7+, the player fires alternating dual bullets |
-| 🎵 **Background Music** | "Pirates of the Caribbean" plays during gameplay with seamless loop |
-| 🔊 **Sound Effects** | Distinct sounds for shooting (PEW), enemy hit (BANG), game over, and level clear |
-| 📊 **Score & Level HUD** | Real-time score, lives, and level display at the top of the screen |
-| 🎲 **Randomized Spawns** | 70% spawn chance per grid slot creates unique enemy formations each level |
+|  **Progressive Difficulty** | Enemy speed, bullet count, and firing rate increase each level |
+| **3 Enemy Types** | Top row (^^ shape), mid row (armed rect), bottom row (crab) — each with unique animations |
+| **Boss Fights** | Every 3rd level features a large UFO boss with HP bar and 3 attack patterns |
+| **3 Lives System** | Player has 3 lives; HUD displays remaining lives in real-time |
+| **Dual-Bullet Mode** | From Level 7+, the player fires alternating dual bullets |
+| **Background Music** | "Pirates of the Caribbean" plays during gameplay with seamless loop |
+| **Sound Effects** | Distinct sounds for shooting (PEW), enemy hit (BANG), game over, and level clear |
+| **Score & Level HUD** | Real-time score, lives, and level display at the top of the screen |
+| **Randomized Spawns** | 70% spawn chance per grid slot creates unique enemy formations each level |
 
 ---
 
-## 🕹️ Controls
+## Controls
 
 | Button | Action |
 |--------|--------|
@@ -81,7 +81,7 @@ Built on top of the **AK Framework** — a lightweight custom RTOS with a **task
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 alien_shooter/
@@ -94,7 +94,7 @@ alien_shooter/
 │       ├── ak/        ← AK Framework (lightweight RTOS)
 │       ├── app/       ← Application / game logic
 │       │   ├── screens/
-│       │   │   ├── scr_game.cpp      ← ⭐ Main game (Space Invaders)
+│       │   │   ├── scr_game.cpp      ← Main game (Space Invaders)
 │       │   │   ├── scr_startup.cpp   ← Boot logo screen
 │       │   │   ├── scr_welcome.cpp   ← Welcome screen
 │       │   │   ├── scr_idle.cpp      ← Idle/standby screen
@@ -168,7 +168,7 @@ arm-none-eabi-gdb -x stm32l_init.gdb
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -196,7 +196,7 @@ arm-none-eabi-gdb -x stm32l_init.gdb
 
 ---
 
-## 🎯 Game Mechanics
+## Game Mechanics
 
 ### Normal Levels
 
@@ -231,23 +231,23 @@ arm-none-eabi-gdb -x stm32l_init.gdb
 
 ---
 
-## 🔊 Sound & Music
+## Sound & Music
 
 The game features a rich audio experience powered by the **piezo buzzer** driver:
 
 | Sound | Trigger |
 |-------|---------|
-| 🎵 Pirates of the Caribbean | Background music (loops during gameplay) |
-| 💥 PEW | Player bullet hits an enemy |
-| 💣 BANG | Player gets hit (loses a life) |
-| ☠️ Game Over | All lives lost |
-| 🎉 Welcome | Level cleared |
+| Pirates of the Caribbean | Background music (loops during gameplay) |
+| PEW | Player bullet hits an enemy |
+| BANG | Player gets hit (loses a life) |
+| Game Over | All lives lost |
+| Welcome | Level cleared |
 
 Additional music available in the library: Super Mario Bros, Merry Christmas, and various tone effects.
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 Detailed guides are available in the `docs/` directory:
 
@@ -260,7 +260,7 @@ Detailed guides are available in the `docs/` directory:
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
