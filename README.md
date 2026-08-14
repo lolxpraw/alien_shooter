@@ -269,15 +269,3 @@ Copyright (c) 2022 AK Foundation
 ```
 
 ---
-
-## 🙏 Acknowledgments
-
-- **[AK Foundation](https://github.com/the-ak-foundation)** — for the AK Embedded Base Kit and RTOS framework
-- **[AK Embedded Software Blog](https://epcb.vn/blogs/ak-embedded-software)** — for tutorials and documentation
-- **Cao Trong Phuoc** — original framework author
-
----
-
-<p align="center">
-  <i>Built with ❤️ on bare-metal STM32 — no OS, no GPU, just pure embedded fun!</i>
-</p>
