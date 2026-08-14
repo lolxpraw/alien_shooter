@@ -286,7 +286,7 @@ static void level_init(uint8_t lv) {
     for (uint8_t i = 0; i < MAX_P_BULLETS; i++) pb[i].on = false;
     px = LCD_WIDTH / 2;
     /* Phát lại nhạc mỗi khi khởi tạo/sang level mới */
-    BUZZER_PlaySoundLoop(BUZZER_SOUND_PIRATES);
+    BUZZER_PlaySoundLoop(BUZZER_SOUND_DOOM);
 }
 
 static void game_reset() { 

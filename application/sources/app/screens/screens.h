@@ -53,4 +53,9 @@ extern view_dynamic_t dyn_view_game;
 extern view_screen_t  scr_game;
 extern void scr_game_handle(ak_msg_t* msg);
 
+// scr_start
+extern view_dynamic_t dyn_view_start;
+extern view_screen_t  scr_start;
+extern void scr_start_handle(ak_msg_t* msg);
+
 #endif //__SCREENS_H__

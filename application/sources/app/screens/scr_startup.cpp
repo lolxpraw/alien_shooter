@@ -1,4 +1,5 @@
 #include "scr_startup.h"
+#include "scr_start.h"
 
 static void view_scr_startup();
 
@@ -48,14 +49,14 @@ void scr_startup_handle(ak_msg_t *msg) {
 	case AC_DISPLAY_BUTON_MODE_PRESSED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_PRESSED\n");
 		timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_LOGO);
-		/* Bấm nút MODE → vào game ngay */
-		SCREEN_TRAN(scr_game_handle, &scr_game);
+		/* Bấm nút MODE → vào màn hình bắt đầu */
+		SCREEN_TRAN(scr_start_handle, &scr_start);
 	} break;
 
 	case AC_DISPLAY_SHOW_LOGO: {
 		APP_DBG_SIG("AC_DISPLAY_SHOW_LOGO\n");
-		/* Sau 2s logo AK → vào màn hình game */
-		SCREEN_TRAN(scr_game_handle, &scr_game);
+		/* Sau 2s logo AK → màn hình bắt đầu */
+		SCREEN_TRAN(scr_start_handle, &scr_start);
 	} break;
 
 	case AC_DISPLAY_SHOW_IDLE: {

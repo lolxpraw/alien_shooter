@@ -143,6 +143,7 @@ enum {
 #define AC_DISPLAY_IDLE_INTERVAL									(15000)
 #define AC_DISPLAY_WELCOME_TEXT_ANIM_TICK_INTERVAL					(120)
 #define AC_DISPLAY_GAME_UPDATE_INTERVAL								(80)  /* 80ms ~ 12 FPS */
+#define AC_DISPLAY_START_BLINK_INTERVAL								(500) /* 500ms blink */
 
 /* define signal */
 enum {
@@ -164,7 +165,8 @@ enum {
 	AC_DISPLAY_SHOW_MERRY_CHRISTMAS_SLEEP,
 	AC_DISPLAY_SHOW_MODBUS_PULL_UPDATE,
 	AC_DISPLAY_SHOW_MODBUS_PULL_SLEEP,
-	AC_DISPLAY_GAME_UPDATE
+	AC_DISPLAY_GAME_UPDATE,
+	AC_DISPLAY_START_BLINK_TICK
 };
 
 /*****************************************************************************/
