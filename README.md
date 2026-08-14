@@ -45,7 +45,7 @@
 
 ---
 
-## 🎮 About the Game
+## About the Game
 
 **Alien Shooter** is a Space Invaders-style game developed for the **AK Embedded Base Kit STM32L151**. The game features a player-controlled ship at the bottom of a 128×64 OLED screen, battling waves of descending aliens and periodic boss encounters.
 
@@ -124,7 +124,7 @@ alien_shooter/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
