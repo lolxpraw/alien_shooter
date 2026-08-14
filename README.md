@@ -47,9 +47,9 @@
 
 ## About the Game
 
-**Alien Shooter** is a Space Invaders-style game developed for the **AK Embedded Base Kit STM32L151**. The game features a player-controlled ship at the bottom of a 128×64 OLED screen, battling waves of descending aliens and periodic boss encounters.
+Alien Shooter is a Space Invaders-style game developed for the AK Embedded Base Kit STM32L151. The game features a player-controlled ship at the bottom of a 128×64 OLED screen, battling waves of descending aliens and periodic boss encounters.
 
-Built on top of the **AK Framework** — a lightweight custom RTOS with a **task + message** event-driven programming model — this project demonstrates real-time embedded game development on resource-constrained hardware.
+Built on top of the AK Framework — a lightweight custom RTOS with a task + message event-driven programming model — this project demonstrates real-time embedded game development on resource-constrained hardware.
 
 ---
 
@@ -191,8 +191,6 @@ arm-none-eabi-gdb -x stm32l_init.gdb
 └─────────────────────────────────────────────┘
                 STM32L151 HARDWARE
 ```
-
-> **Key rule:** Upper layers only call down to lower layers, never the reverse.
 
 ---
 
