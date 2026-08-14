@@ -251,10 +251,8 @@ Detailed guides are available in the `docs/` directory:
 
 | Document | Content |
 |----------|---------|
-| [01.md](docs/01.md) | Getting started guide — Fork, clone, and set up your environment |
-| [02.md](docs/02.md) | Game programming workflow |
-| [03.md](docs/03.md) | Step-by-step example: creating a new screen |
-| [04.md](docs/04.md) | Building, flashing, and pushing code to GitHub |
+| [runtime_signal.md](docs/runtime_signal.md) | Runtime signal processing logic and diagrams |
+| [game_object.md](docs/game_object.md) | Game object sequences and behaviors |
 
 ---
 
