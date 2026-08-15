@@ -24,6 +24,8 @@
   <img width="600" alt="gameplay" src="path/to/gameplay_screenshot.png" />
 </p> -->
 
+<img width="1024" height="512" alt="image" src="https://github.com/user-attachments/assets/97af589b-bce3-4af5-8815-396e83e53c0d" />
+
 ---
 
 ## Demo
