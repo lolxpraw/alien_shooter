@@ -38,14 +38,6 @@ https://github.com/user-attachments/assets/5f9ddeb5-3e8e-43e3-b2de-e2846516fd87
 
 [<img src="hardware/images/ak-embedded-base-kit-version-3.jpg" width="480"/>](<https://epcb.vn/products/ak-embedded-base-kit-lap-trinh-nhung-vi-dieu-khien-mcu>)
 
-## Purpose
-
-Students who are enrolled in the AK foundation's embedded training program will make use of this evaluation kit to develop a small unique video game that will be able to run smoothly as well as closely follow an event driven paradigm in embedded systems programming. This repository also contains all the code which would form the AK framework that students can use to facilitate their development process.
-
-We also hope that this repository will also be useful for those are on the look out for a well-built kit to practice their embedded systems programming skills.
-
-
-[<img src="hardware/images/ak-mcu-kit-hw2-github-1280x640px.png" width="960"/>](<https://epcb.vn/products/ak-embedded-base-kit-lap-trinh-nhung-vi-dieu-khien-mcu>)
 
 ## Memory map
 
