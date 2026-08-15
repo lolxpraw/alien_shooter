@@ -226,7 +226,8 @@ make flash
   - **Spread** — two bullets from both edges
 - Boss randomly changes direction for unpredictable movement
 
-<img width="1024" height="512" alt="image" src="https://github.com/user-attachments/assets/8a6b4f5a-207f-4a06-af71-e3228b96ef75" />
+<img width="512" height="256" alt="boss" src="https://github.com/user-attachments/assets/916c9b6a-9c91-461c-9357-3b5b1f04e4b0" />
+
 
 ### Scoring
 
@@ -234,6 +235,8 @@ make flash
 |-------|--------|
 | Kill enemy / Hit boss | +10 |
 | Clear level | +50 |
+
+<img width="512" height="256" alt="lv_clear" src="https://github.com/user-attachments/assets/a0e7aa5a-5775-4d34-bc79-463f67bcdb4f" />
 
 ---
 
