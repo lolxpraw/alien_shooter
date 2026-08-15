@@ -214,6 +214,9 @@ make flash
 | 4     | 2 ticks   | 5 ticks       | 4           | 5 px/tick    |
 | 5+    | 2 ticks   | 3 ticks       | 5           | 6 px/tick    |
 
+<img width="512" height="256" alt="lv1" src="https://github.com/user-attachments/assets/e54f4dbd-fe3c-4328-be93-cae8419795d5" />
+
+
 ### Boss Levels (Every 3rd Level)
 
 - A large **UFO boss** appears with an HP bar (HP = level × 10)
@@ -222,6 +225,8 @@ make flash
   - **Aimed** — bullet fired directly at the player
   - **Spread** — two bullets from both edges
 - Boss randomly changes direction for unpredictable movement
+
+<img width="1024" height="512" alt="image" src="https://github.com/user-attachments/assets/8a6b4f5a-207f-4a06-af71-e3228b96ef75" />
 
 ### Scoring
 
