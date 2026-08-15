@@ -163,13 +163,6 @@ make all
   <img width="800" alt="build-output" src="path/to/build_screenshot.png" />
 </p> -->
 
-### Flash to Board
-
-```bash
-# Connect ST-Link to the board, then run:
-make flash
-```
-
 
 ## Architecture Overview
 
