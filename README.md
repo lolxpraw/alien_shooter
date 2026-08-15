@@ -262,7 +262,7 @@ The game features a rich audio experience powered by the **piezo buzzer** driver
 
 ## Documentation
 
-Detailed guides are available in the `docs/` directory:
+About game object and runtime signal are available in the `docs/` directory:
 
 | Document | Content |
 |----------|---------|
