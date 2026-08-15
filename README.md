@@ -168,12 +168,6 @@ make all
 make flash
 ```
 
-Or use the GDB script:
-```bash
-arm-none-eabi-gdb -x stm32l_init.gdb
-```
-
----
 
 ## Architecture Overview
 
