@@ -26,6 +26,11 @@
 
 ---
 
+## Demo
+
+
+https://github.com/user-attachments/assets/5f9ddeb5-3e8e-43e3-b2de-e2846516fd87
+
 
 ## About the Game
 
@@ -44,7 +49,7 @@ Built on top of the AK Framework — a lightweight custom RTOS with a task + mes
 | **Boss Fights** | Every 3rd level features a large UFO boss with HP bar and 3 attack patterns |
 | **3 Lives System** | Player has 3 lives; HUD displays remaining lives in real-time |
 | **Dual-Bullet Mode** | From Level 7+, the player fires alternating dual bullets |
-| **Background Music** | "Pirates of the Caribbean" plays during gameplay with seamless loop |
+| **Background Music** | "Doom OST" plays during gameplay with seamless loop |
 | **Sound Effects** | Distinct sounds for shooting (PEW), enemy hit (BANG), game over, and level clear |
 | **Score & Level HUD** | Real-time score, lives, and level display at the top of the screen |
 | **Randomized Spawns** | 70% spawn chance per grid slot creates unique enemy formations each level |
