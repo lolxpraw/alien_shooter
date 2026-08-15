@@ -139,8 +139,8 @@ alien_shooter/
 
 - **OS:** Ubuntu / Linux
 - **Toolchain:** `arm-none-eabi-gcc` (ARM cross-compiler)
-- **Debugger:** ST-Link V2 + `openocd` or `st-flash`
-- **Editor:** VSCode (recommended)
+- **Debugger:** UART Shell
+- **Editor:** VSCode 
 
 > For detailed environment setup, follow the official guide:
 > **[AK Embedded Base Kit STM32L151 — Getting Started](https://epcb.vn/blogs/ak-embedded-software/ak-embedded-base-kit-stm32l151-getting-started)**
