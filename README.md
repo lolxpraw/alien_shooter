@@ -236,7 +236,13 @@ make flash
 | Kill enemy / Hit boss | +10 |
 | Clear level | +50 |
 
+Level clear screen:
+
 <img width="512" height="256" alt="lv_clear" src="https://github.com/user-attachments/assets/a0e7aa5a-5775-4d34-bc79-463f67bcdb4f" />
+
+Game over screen: 
+
+<img width="512" height="256" alt="game_over" src="https://github.com/user-attachments/assets/fd95df49-352e-4d22-b648-223f9471c025" />
 
 ---
 
