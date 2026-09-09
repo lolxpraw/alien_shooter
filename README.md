@@ -24,7 +24,8 @@
   <img width="600" alt="gameplay" src="path/to/gameplay_screenshot.png" />
 </p> -->
 
-<img width="1024" height="512" alt="image" src="https://github.com/user-attachments/assets/97af589b-bce3-4af5-8815-396e83e53c0d" />
+<img width="2930" height="1440" alt="watermark-removed-pic (1)" src="https://github.com/user-attachments/assets/4324235a-97e9-46b6-8cde-2f5005a83074" />
+
 
 ---
 
