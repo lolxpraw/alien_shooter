@@ -82,22 +82,6 @@ Built on top of the AK Framework — a lightweight custom RTOS with a task + mes
 ---
 
 
-## Game Features
-
-| Feature | Description |
-|---------|-------------|
-|  **Progressive Difficulty** | Enemy speed, bullet count, and firing rate increase each level |
-| **3 Enemy Types** | Top row (^^ shape), mid row (armed rect), bottom row (crab) — each with unique animations |
-| **Boss Fights** | Every 3rd level features a large UFO boss with HP bar and 3 attack patterns |
-| **3 Lives System** | Player has 3 lives; HUD displays remaining lives in real-time |
-| **Dual-Bullet Mode** | From Level 7+, the player fires alternating dual bullets |
-| **Background Music** | "Doom OST" plays during gameplay with seamless loop |
-| **Sound Effects** | Distinct sounds for shooting (PEW), enemy hit (BANG), game over, and level clear |
-| **Score & Level HUD** | Real-time score, lives, and level display at the top of the screen |
-| **Randomized Spawns** | 70% spawn chance per grid slot creates unique enemy formations each level |
-
----
-
 ## Controls
 
 | Button | Action |
@@ -209,10 +193,26 @@ make all
 ```
 
 ---
+## Game Features
+
+| Feature | Description |
+|---------|-------------|
+|  **Progressive Difficulty** | Enemy speed, bullet count, and firing rate increase each level |
+| **3 Enemy Types** | Top row (^^ shape), mid row (armed rect), bottom row (crab) — each with unique animations |
+| **Boss Fights** | Every 3rd level features a large UFO boss with HP bar and 3 attack patterns |
+| **3 Lives System** | Player has 3 lives; HUD displays remaining lives in real-time |
+| **Dual-Bullet Mode** | From Level 7+, the player fires alternating dual bullets |
+| **Background Music** | "Doom OST" plays during gameplay with seamless loop |
+| **Sound Effects** | Distinct sounds for shooting (PEW), enemy hit (BANG), game over, and level clear |
+| **Score & Level HUD** | Real-time score, lives, and level display at the top of the screen |
+| **Randomized Spawns** | 70% spawn chance per grid slot creates unique enemy formations each level |
+
+---
+
 
 ## Game Mechanics
 
-### Normal Levels
+### I. Normal Levels
 
 - **6×3 enemy grid** with randomized spawn (70% per slot)
 - Enemies march left/right and drop down when hitting screen edges
@@ -230,7 +230,7 @@ make all
 <img width="512" height="256" alt="lv1" src="https://github.com/user-attachments/assets/e54f4dbd-fe3c-4328-be93-cae8419795d5" />
 
 
-### Boss Levels (Every 3rd Level)
+### II. Boss Levels (Every 3rd Level)
 
 - A large **UFO boss** appears with an HP bar (HP = level × 10)
 - 3 attack patterns that switch randomly:
@@ -242,7 +242,7 @@ make all
 <img width="512" height="256" alt="boss" src="https://github.com/user-attachments/assets/916c9b6a-9c91-461c-9357-3b5b1f04e4b0" />
 
 
-### Scoring
+### III. Scoring
 
 | Event | Points |
 |-------|--------|
