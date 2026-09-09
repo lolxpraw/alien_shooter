@@ -59,7 +59,7 @@ ak_flash /dev/ttyUSB0 ak-base-kit-stm32l151-application.bin 0x08003000
 
 **MCU Naming Convention:**
 
-<div align="center">
+<div align="left">
 
 | Part | Meaning |
 |---|---|
@@ -77,7 +77,7 @@ Alien Shooter is a Space Invaders-style game developed for the AK Embedded Base 
 
 Built on top of the AK Framework — a lightweight custom RTOS with a task + message event-driven programming model — this project demonstrates real-time embedded game development on resource-constrained hardware.
 
-<img width="414" height="330" alt="alien_shooter" src="https://github.com/user-attachments/assets/a23f6486-40a9-4aab-8397-8d67adbb2b8f" />
+<img width="427" height="352" alt="alien_shooter" src="https://github.com/user-attachments/assets/7333a75e-84b2-47d9-8b27-749ae11b985a" />
 
 ---
 
