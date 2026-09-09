@@ -33,7 +33,9 @@
 
 https://github.com/user-attachments/assets/5f9ddeb5-3e8e-43e3-b2de-e2846516fd87
 
-## Hardware
+## Device
+
+### I. Hardware
 
 - This kit integrates 1.54" Oled LCD, 3 push buttons, and 1 buzzer, which would be sufficient to create a small video game with an event driven paradigm.
 - It also includes RS485, Qwiic Connect System, and Grove Ecosystems, suitable for prototyping other practical applications in embedded systems.
@@ -41,7 +43,7 @@ https://github.com/user-attachments/assets/5f9ddeb5-3e8e-43e3-b2de-e2846516fd87
 [<img src="hardware/images/ak-embedded-base-kit-version-3.jpg" width="480"/>](<https://epcb.vn/products/ak-embedded-base-kit-lap-trinh-nhung-vi-dieu-khien-mcu>)
 
 
-## Memory map
+### II. Memory map
 
 AK base kit uses the following memory map to run its application code
 
@@ -54,13 +56,31 @@ AK base kit uses the following memory map to run its application code
 ```sh
 ak_flash /dev/ttyUSB0 ak-base-kit-stm32l151-application.bin 0x08003000
 ```
+
+**MCU Naming Convention:**
+
+<div align="center">
+
+| Part | Meaning |
+|---|---|
+| `STM32` | STMicroelectronics 32-bit MCU family. |
+| `L` | Low-power series. |
+| `151` | STM32L151 product line. |
+| `C` | 48-pin package. |
+| `B` | 128 KB Flash memory. |
+| `T` | LQFP package. |
+| `6` | Industrial temperature grade. |
+
 ## About the Game
 
 Alien Shooter is a Space Invaders-style game developed for the AK Embedded Base Kit STM32L151. The game features a player-controlled ship at the bottom of a 128×64 OLED screen, battling waves of descending aliens and periodic boss encounters.
 
 Built on top of the AK Framework — a lightweight custom RTOS with a task + message event-driven programming model — this project demonstrates real-time embedded game development on resource-constrained hardware.
 
+<img width="414" height="330" alt="alien_shooter" src="https://github.com/user-attachments/assets/a23f6486-40a9-4aab-8397-8d67adbb2b8f" />
+
 ---
+
 
 ## Game Features
 
